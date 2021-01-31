@@ -1,0 +1,4 @@
+*.terraform*
+*.tfvars
+statefile.tf
+.DS_Store
