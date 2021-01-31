@@ -1,10 +1,11 @@
 #===============================================================================
 #
-#  Rueda.Uz website full deployment, including:
+#  Static website full deployment, including:
 #    - S3 bucket setup
 #    - Route53 setup
 #    - CloudFront distribution setup
 #    - SSL Certificate
+#    - Create user to publish the content of website
 #
 #===============================================================================
 
