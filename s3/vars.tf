@@ -20,6 +20,11 @@ variable "bucket" {
   default = ""
 }
 
+variable "log_bucket" {
+  type    = string
+  default = ""
+}
+
 variable "user_id" {
   type    = string
   default = ""

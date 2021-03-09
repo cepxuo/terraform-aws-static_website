@@ -24,6 +24,11 @@ variable "bucket" {
   default     = ""
 }
 
+variable "log_bucket" {
+  type    = string
+  default = ""
+}
+
 variable "domain" {
   description = "Domain Name"
   type        = string

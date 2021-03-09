@@ -6,6 +6,11 @@ resource "aws_s3_bucket" "website_bucket" {
   force_destroy = false
   tags          = merge(var.tags, { Name = "${var.project_name} bucket" })
 
+  logging {
+    target_bucket = var.log_bucket
+    target_prefix = "${var.bucket}/"
+  }
+
   versioning {
     enabled = true
   }

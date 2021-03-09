@@ -59,8 +59,9 @@ module "s3" {
   project_name = var.project_name
   tags         = var.tags
   user_id      = module.user.user_id
-
-  depends_on = [module.user.publisher]
+  log_bucket   = var.log_bucket
+  bucket       = var.bucket
+  depends_on   = [module.user.publisher]
 }
 
 module "user" {
