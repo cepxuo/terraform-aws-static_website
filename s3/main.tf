@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "website_bucket" {
 
   logging {
     target_bucket = var.log_bucket
-    target_prefix = "${var.bucket}/"
+    target_prefix = "${var.bucket}/s3_bucket/"
   }
 
   versioning {

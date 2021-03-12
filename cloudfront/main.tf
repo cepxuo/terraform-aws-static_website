@@ -69,6 +69,12 @@ resource "aws_cloudfront_distribution" "website_cloudfront" {
   tags                = merge(var.tags, { Name = "${var.project_name} CloudFront Distribution" })
   aliases             = [var.domain]
 
+  logging_config {
+    include_cookies = false
+    bucket          = "${var.log_bucket}.s3.amazonaws.com"
+    prefix          = "${var.bucket}/cloudfront/"
+  }
+
   origin {
     domain_name = var.bucket_dn
     origin_id   = var.s3_origin_id

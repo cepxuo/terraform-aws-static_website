@@ -75,6 +75,7 @@ module "user" {
 module "cloudfront" {
   source       = "./cloudfront"
   bucket       = module.s3.bucket_id
+  log_bucket   = var.log_bucket
   bucket_arn   = module.s3.bucket_arn
   bucket_dn    = module.s3.bucket_dn
   region       = var.region

@@ -25,6 +25,11 @@ variable "bucket" {
   default = ""
 }
 
+variable "log_bucket" {
+  type    = string
+  default = ""
+}
+
 variable "bucket_arn" {
   type    = string
   default = ""
