@@ -26,7 +26,7 @@ resource "aws_acm_certificate" "wildcard" {
   provider                  = aws.NVirginia
   domain_name               = "*.${var.domain}"
   subject_alternative_names = [var.domain]
-  tags                      = var.tags
+  tags                      = var.tagsZZ
   validation_method         = "DNS"
 
   lifecycle {
