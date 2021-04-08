@@ -10,7 +10,7 @@
 #===============================================================================
 
 provider "aws" {
-  region = var.regionZZZ
+  region = var.region
 }
 
 provider "aws" {
@@ -55,7 +55,7 @@ resource "aws_acm_certificate_validation" "this" {
 
 module "s3" {
   source       = "./s3"
-  region       = var.region
+  region       = var.regionZZZ
   project_name = var.project_name
   tags         = var.tags
   user_id      = module.user.user_id
