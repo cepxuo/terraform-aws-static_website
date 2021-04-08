@@ -25,8 +25,9 @@ variable "bucket" {
 }
 
 variable "log_bucket" {
-  type    = string
-  default = ""
+  description = "Bucket name to store logs"
+  type        = string
+  default     = ""
 }
 
 variable "domain" {
