@@ -61,6 +61,7 @@ POLICY
 #---------------------------[CloudFront Distribution]---------------------------
 
 resource "aws_cloudfront_distribution" "website_cloudfront" {
+  #checkov:skip=CKV_AWS_68: CloudFront Distribution should have WAF enabled
   depends_on          = [aws_cloudfront_origin_access_identity.website_access_identity]
   enabled             = true
   is_ipv6_enabled     = true

@@ -9,6 +9,7 @@ resource "aws_iam_access_key" "key" {
 }
 
 resource "aws_iam_user_policy" "policy" {
+  #checkov:skip=CKV_AWS_40: Ensure IAM policies are attached only to groups or roles (Reducing access management complexity may in-turn reduce opportunity for a principal to inadvertently receive or retain excessive privileges.)
   name   = "${var.bucket}-access-policy"
   user   = aws_iam_user.publisher.name
   policy = <<EOF
