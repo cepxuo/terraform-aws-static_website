@@ -1,15 +1,5 @@
 #-------------------------[S3 Bucket Policy Generation]-------------------------
 
-data "aws_iam_policy_document" "s3_policy" {
-  statement {
-    actions   = ["s3:GetObject"]
-    resources = ["${var.bucket_arn}/*"]
-    principals {
-      type        = "AWS"
-      identifiers = [aws_cloudfront_origin_access_identity.website_access_identity.iam_arn]
-    }
-  }
-}
 
 resource "aws_cloudfront_origin_access_identity" "website_access_identity" {
   comment = "${var.project_name} Access Identity"
@@ -17,7 +7,6 @@ resource "aws_cloudfront_origin_access_identity" "website_access_identity" {
 
 resource "aws_s3_bucket_policy" "website_s3_bp" {
   bucket = var.bucket
-  #policy     = data.aws_iam_policy_document.s3_policy.json
   policy = <<POLICY
 {
       "Version": "2012-10-17",

@@ -41,19 +41,11 @@ resource "aws_s3_bucket_object" "website" {
   bucket = aws_s3_bucket.website_bucket.id
   acl    = "private"
   key    = "website/"
-  source = "/dev/null"
 }
 
 resource "aws_s3_bucket_object" "state" {
   bucket = aws_s3_bucket.website_bucket.id
   acl    = "private"
   key    = "state/"
-  source = "/dev/null"
 }
 
-resource "aws_s3_bucket_object" "logs" {
-  bucket = aws_s3_bucket.website_bucket.id
-  acl    = "private"
-  key    = "logs/"
-  source = "/dev/null"
-}
