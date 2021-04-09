@@ -1,5 +1,15 @@
 #------------------------------[Create User]-------------------------------
 
+resource "aws_iam_group" "publishers" {
+  name = "${var.bucket}_publishers"
+}
+
+resource "aws_iam_group_membership" "publishers" {
+  name  = "${var.bucket}_publishers"
+  group = aws_iam_group.publishers.name
+  users = [aws_iam_user.publisher.name]
+}
+
 resource "aws_iam_user" "publisher" {
   name = "${var.bucket}_publisher"
 }
@@ -8,10 +18,9 @@ resource "aws_iam_access_key" "key" {
   user = aws_iam_user.publisher.name
 }
 
-resource "aws_iam_user_policy" "policy" {
-  #checkov:skip=CKV_AWS_40: Ensure IAM policies are attached only to groups or roles (Reducing access management complexity may in-turn reduce opportunity for a principal to inadvertently receive or retain excessive privileges.)
+resource "aws_iam_group_policy" "policy" {
   name   = "${var.bucket}-access-policy"
-  user   = aws_iam_user.publisher.name
+  group  = aws_iam_group.publishers.name
   policy = <<EOF
 {
       "Version": "2012-10-17",
