@@ -4,14 +4,14 @@ resource "aws_iam_group" "publishers" {
   name = "${var.bucket}_publishers"
 }
 
+resource "aws_iam_user" "publisher" {
+  name = "${var.bucket}_publisher"
+}
+
 resource "aws_iam_group_membership" "publishers" {
   name  = "${var.bucket}_publishers"
   group = aws_iam_group.publishers.name
   users = [aws_iam_user.publisher.name]
-}
-
-resource "aws_iam_user" "publisher" {
-  name = "${var.bucket}_publisher"
 }
 
 resource "aws_iam_access_key" "key" {
