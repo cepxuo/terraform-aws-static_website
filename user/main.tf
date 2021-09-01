@@ -6,6 +6,7 @@ resource "aws_iam_group" "publishers" {
 
 resource "aws_iam_user" "publisher" {
   name = "${var.bucket}_publisher"
+  tags = merge(var.tags, { Name = "${var.project_name} Publisher User" })
 }
 
 resource "aws_iam_group_membership" "publishers" {

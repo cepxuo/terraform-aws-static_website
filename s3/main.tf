@@ -41,19 +41,18 @@ resource "aws_s3_bucket_object" "website" {
   bucket = aws_s3_bucket.website_bucket.id
   acl    = "private"
   key    = "website/"
-  source = "/dev/null"
 }
 
 resource "aws_s3_bucket_object" "state" {
   bucket = aws_s3_bucket.website_bucket.id
   acl    = "private"
   key    = "state/"
-  source = "/dev/null"
 }
 
-resource "aws_s3_bucket_object" "logs" {
-  bucket = aws_s3_bucket.website_bucket.id
-  acl    = "private"
-  key    = "logs/"
-  source = "/dev/null"
+resource "aws_s3_bucket_public_access_block" "website" {
+  bucket                  = aws_s3_bucket.website_bucket.id
+  block_public_acls       = false
+  ignore_public_acls      = false
+  block_public_policy     = true
+  restrict_public_buckets = true
 }
