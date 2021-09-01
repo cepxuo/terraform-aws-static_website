@@ -27,18 +27,11 @@ resource "aws_s3_bucket_policy" "website_s3_bp" {
                   "AWS": "${var.user_arn}"
               },
               "Action": [
-                  "s3:DeleteObjectTagging",
-                  "s3:DeleteObjectVersion",
-                  "s3:DeleteObjectVersionTagging",
-                  "s3:ListMultipartUploadParts",
-                  "s3:PutObject",
-                  "s3:GetObjectAcl",
-                  "s3:GetObject",
-                  "s3:AbortMultipartUpload",
-                  "s3:DeleteObject",
-                  "s3:PutObjectAcl"
+                  "s3:*"
               ],
-              "Resource": "arn:aws:s3:::${var.bucket}/website/*"
+              "Resource": ["arn:aws:s3:::${var.bucket}/website/*",
+                           "arn:aws:s3:::${var.bucket}"
+              ]
           }
       ]
 }

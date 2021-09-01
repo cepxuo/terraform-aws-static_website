@@ -49,3 +49,11 @@ resource "aws_s3_bucket_object" "state" {
   key    = "state/"
 }
 
+resource "aws_s3_bucket_public_access_block" "website" {
+  bucket                  = aws_s3_bucket.website_bucket.id
+  block_public_acls       = false
+  ignore_public_acls      = false
+  block_public_policy     = true
+  restrict_public_buckets = true
+}
+
